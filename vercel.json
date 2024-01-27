@@ -5,8 +5,8 @@
             "schedule": "0 12 * * 1-5"
         },
         {
-            "path": "/overview",
-            "schedule": "0 12 * * 1-5"
+            "path": "/create",
+            "schedule": "0 17 27 * *"
         }
     ]
 }
