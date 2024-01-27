@@ -11,7 +11,7 @@ const shema = z.object({
     secret: z.string(),
 });
 
-export async function POST(request: Request) {
+export async function GET(request: Request) {
     if (
         request.headers.get("Authorization") !==
         `Bearer ${process.env.CRON_SECRET}`
