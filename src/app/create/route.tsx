@@ -26,7 +26,7 @@ export async function GET(request: Request) {
             const yesUrl = `${process.env.BASE_URL}/response/?answer=yes&token=${token}&date=${dateString}`;
             const noUrl = `${process.env.BASE_URL}/response/?answer=no&token=${token}&date=${dateString}`;
             return {
-                from: "Acme <onboarding@resend.dev>",
+                from: "Journz <onboarding@resend.dev>",
                 to: user.email,
                 subject: "Journz - Are you going to be at the office today?",
                 react: (
