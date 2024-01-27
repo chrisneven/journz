@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import { createDateNumber } from "@/lib/utils";
 import JournzOverview from "@emails/overview";
-import { endOfMonth, startOfMonth } from "date-fns";
+import { addMonths, endOfMonth, startOfMonth } from "date-fns";
 import { Resend } from "resend";
 import { z } from "zod";
 
@@ -37,11 +37,15 @@ export async function POST(request: Request) {
     if (!users.length) {
         return Response.json({ error: "No users found" }, { status: 400 });
     }
-    const date = new Date();
-    const month = date.toLocaleString("default", {
+    const currentDate = new Date();
+    const previousMonth = addMonths(currentDate, -1);
+
+    // We want an overview of the previous month
+
+    const month = previousMonth.toLocaleString("default", {
         month: "long",
     });
-    const year = date.getFullYear().toString();
+    const year = previousMonth.getFullYear().toString();
 
     const res = await resend.batch.send(
         users.map((user) => {
