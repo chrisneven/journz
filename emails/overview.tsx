@@ -2,6 +2,7 @@ import {
     Body,
     Container,
     Head,
+    Hr,
     Html,
     Preview,
     Text,
@@ -34,13 +35,30 @@ export const JournzOverview = ({
         </Preview>
         <Body style={main}>
             <Container style={container}>
-                <Text style={paragraph}>Hey {firstName},</Text>
+                <Text style={logo}>🚆 Journz</Text>
+                <Hr style={hr} />
+                <Text style={paragraph}>Hello {firstName} 🌟,</Text>
                 <Text style={paragraph}>
-                    This is your overview of {month} in {year}. You were at the
-                    office {yesAmount} times and you weren&apos;t at the office{" "}
-                    {noAmount} times. In total you were at the office{" "}
-                    {totalAmount} times.
+                    You&apos;ve worked {totalAmount} days this month.
+                    Here&apos;s your dazzling {month} {year} office attendance
+                    snapshot! 🗓️
                 </Text>
+                <ul>
+                    <li
+                        style={{
+                            marginBottom: "10px",
+                        }}
+                    >
+                        Days at the office: {yesAmount} 🏢
+                    </li>
+                    <li
+                        style={{
+                            marginBottom: "10px",
+                        }}
+                    >
+                        Days at home: {noAmount} 🏠
+                    </li>
+                </ul>
 
                 <Text
                     style={{
@@ -50,8 +68,16 @@ export const JournzOverview = ({
                     }}
                 >
                     This means you&apos;ll get a travel reimbursement of €
-                    {travelReimbursement}🚀.
+                    {travelReimbursement} this month! 💸
                 </Text>
+                <Text style={paragraph}>
+                    Thank you for your commitment. Let&apos;s keep this momentum
+                    going! 🚀
+                </Text>
+
+                <Text style={paragraph}>Cheers,</Text>
+
+                <Text style={paragraph}>The Journz Team 📈🚀</Text>
             </Container>
         </Body>
     </Html>
@@ -81,6 +107,8 @@ const container = {
 };
 
 const logo = {
+    fontSize: "22px",
+    fontWeight: "bold",
     margin: "0 auto",
 };
 

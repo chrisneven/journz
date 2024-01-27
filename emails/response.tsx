@@ -28,18 +28,24 @@ export const JournzResponse = ({
         <Preview>Are you going to be at the office today?</Preview>
         <Body style={main}>
             <Container style={container}>
-                <Text style={paragraph}>Hey {userFirstname},</Text>
+                <Text style={logo}>🚆 Journz</Text>
+                <Hr style={hr} />
+                <Text style={paragraph}>Hello {userFirstname} 👋,</Text>
                 <Text style={paragraph}>
-                    Are you going to be at the office today? We&apos;re trying
-                    to figure out how many times you&apos;ll be at the office
-                    this month. At the end you&apos;ll get a nice report with
-                    all the data. This data you can use to reimburce travel
-                    expenses or to see how much you&apos;re at the office.
+                    Checking in for today: Are you planning to be at the office?
+                    🏢 Just click Yes or No below. Your input is crucial in
+                    helping us tally this month&apos;s office attendance for a
+                    comprehensive report. This info is key for processing travel
+                    reimbursements and understanding your office presence
+                    trends.
+                </Text>
+                <Text style={paragraph}>
+                    <strong>Quick and Easy:</strong>
                 </Text>
 
                 <Section style={btnContainer}>
                     <Button style={primaryButton} href={yesUrl}>
-                        Yes, I&apos;m going to be at the office
+                        Yes, I&apos;m in!
                     </Button>
                     <Button
                         style={{
@@ -48,25 +54,21 @@ export const JournzResponse = ({
                         }}
                         href={noUrl}
                     >
-                        No, I&apos;m not going to be at the office
+                        Not today!
                     </Button>
                 </Section>
 
                 <Text style={paragraph}>
-                    <strong>How does it work?</strong>
-                    <br />
-                    Every day you&apos;ll get an email with the question if
-                    you&apos;re going to be at the office. You can reply to this
-                    email with &apos;yes&apos; or &apos;no&apos;. You can also
-                    use the button below.
+                    We compile these responses to provide you with a neat
+                    summary at the end of the month. Your cooperation is greatly
+                    appreciated! 🌟
                 </Text>
 
                 <Text style={paragraph}>
-                    Best,
+                    Cheers,
                     <br />
-                    The Journz team
+                    The Journz Team 📈🚀
                 </Text>
-                <Hr style={hr} />
             </Container>
         </Body>
     </Html>
@@ -92,6 +94,8 @@ const container = {
 };
 
 const logo = {
+    fontSize: "22px",
+    fontWeight: "bold",
     margin: "0 auto",
 };
 
