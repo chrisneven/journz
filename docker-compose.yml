@@ -1,0 +1,17 @@
+# This is a sample docker-compose.yml file that can be used to run the
+# application locally. It will start a postgres database and an adminer
+services:
+    db:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: 1234
+        ports:
+            - 5432:5432
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+# the dburl string will be:
+# postgres://postgres:1234@db:5432/postgres?sslmode=disable
