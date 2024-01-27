@@ -19,6 +19,7 @@ export async function GET(request: Request) {
         return Response.json({ error: "Invalid secret" }, { status: 401 });
     }
 
+    // We want an overview of the previous month
     const currentDate = new Date();
     const previousMonth = addMonths(currentDate, -1);
     const monthStart = createDateNumber(startOfMonth(previousMonth));
@@ -40,8 +41,6 @@ export async function GET(request: Request) {
         return Response.json({ error: "No users found" }, { status: 400 });
     }
 
-    // We want an overview of the previous month
-
     const month = previousMonth.toLocaleString("default", {
         month: "long",
     });
@@ -52,10 +51,15 @@ export async function GET(request: Request) {
             const yesAmount = user.responses.filter(
                 (response) => response.attended
             ).length;
-            const travelReimbursement = (yesAmount * 0.23).toFixed(2);
+            // e.g. 10 times * 10 km * 0.19 = 19 euro
+            const travelReimbursement = (
+                yesAmount *
+                user.travelDistance *
+                (user.travelAllowance / 100)
+            ).toFixed(2);
 
             return {
-                from: "Acme <onboarding@resend.dev>",
+                from: "Journz <onboarding@resend.dev>",
                 to: user.email,
                 subject: `Journz - Your overview of ${month} in ${year}`,
                 react: (
