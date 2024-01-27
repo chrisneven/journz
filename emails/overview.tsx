@@ -39,11 +39,17 @@ export const JournzOverview = ({
                 <Hr style={hr} />
                 <Text style={paragraph}>Hello {firstName} 🌟,</Text>
                 <Text style={paragraph}>
-                    You&apos;ve worked {totalAmount} days this month.
                     Here&apos;s your dazzling {month} {year} office attendance
                     snapshot! 🗓️
                 </Text>
                 <ul>
+                    <li
+                        style={{
+                            marginBottom: "10px",
+                        }}
+                    >
+                        Total responses: {totalAmount} 📅
+                    </li>
                     <li
                         style={{
                             marginBottom: "10px",
