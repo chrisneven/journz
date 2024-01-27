@@ -10,7 +10,9 @@ import {
     Text,
 } from "@react-email/components";
 
-type JournzResponse = {
+const baseUrl = process.env.BASE_URL;
+
+type JournzResponseProps = {
     userFirstname: string;
     yesUrl: string;
     noUrl: string;
@@ -20,7 +22,7 @@ export const JournzResponse = ({
     userFirstname,
     noUrl,
     yesUrl,
-}: JournzResponse) => (
+}: JournzResponseProps) => (
     <Html>
         <Head />
         <Preview>Are you going to be at the office today?</Preview>
@@ -74,7 +76,7 @@ JournzResponse.PreviewProps = {
     userFirstname: "Alan",
     yesUrl: `${baseUrl}/response/yes`,
     noUrl: `${baseUrl}/response/no`,
-} as JournzResponse;
+} as JournzResponseProps;
 
 export default JournzResponse;
 

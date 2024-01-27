@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import { generateToken } from "@/lib/utils";
+import JournzResponse from "@emails/response";
 import { Resend } from "resend";
-import JournzResponse from "../../../emails/response";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
