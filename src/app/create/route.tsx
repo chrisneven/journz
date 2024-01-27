@@ -23,8 +23,8 @@ export async function POST(request: Request) {
     const res = await resend.batch.send(
         users.map((user) => {
             const token = generateToken(user.id);
-            const yesUrl = `${process.env.VERCEL_URL}/response/?answer=yes&token=${token}&date=${dateString}`;
-            const noUrl = `${process.env.VERCEL_URL}/response/?answer=no&token=${token}&date=${dateString}`;
+            const yesUrl = `${process.env.BASE_URL}/response/?answer=yes&token=${token}&date=${dateString}`;
+            const noUrl = `${process.env.BASE_URL}/response/?answer=no&token=${token}&date=${dateString}`;
             return {
                 from: "Acme <onboarding@resend.dev>",
                 to: user.email,

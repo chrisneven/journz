@@ -16,8 +16,6 @@ type JournzResponse = {
     noUrl: string;
 };
 
-const baseUrl = process.env.VERCEL_URL;
-
 export const JournzResponse = ({
     userFirstname,
     noUrl,

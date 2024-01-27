@@ -17,8 +17,6 @@ type JournzOverviewProps = {
     travelReimbursement: string;
 };
 
-const baseUrl = process.env.VERCEL_URL;
-
 export const JournzOverview = ({
     firstName,
     yesAmount,
