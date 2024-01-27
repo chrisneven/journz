@@ -19,8 +19,10 @@ export async function GET(request: Request) {
         return Response.json({ error: "Invalid secret" }, { status: 401 });
     }
 
-    const monthStart = createDateNumber(startOfMonth(new Date()));
-    const monthEnd = createDateNumber(endOfMonth(new Date()));
+    const currentDate = new Date();
+    const previousMonth = addMonths(currentDate, -1);
+    const monthStart = createDateNumber(startOfMonth(previousMonth));
+    const monthEnd = createDateNumber(endOfMonth(previousMonth));
 
     const users = await prisma.user.findMany({
         include: {
@@ -37,8 +39,6 @@ export async function GET(request: Request) {
     if (!users.length) {
         return Response.json({ error: "No users found" }, { status: 400 });
     }
-    const currentDate = new Date();
-    const previousMonth = addMonths(currentDate, -1);
 
     // We want an overview of the previous month
 
