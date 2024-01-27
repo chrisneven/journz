@@ -33,7 +33,7 @@ export async function POST(request: Request) {
                     <JournzResponse
                         yesUrl={yesUrl}
                         noUrl={noUrl}
-                        userFirstname="Chris"
+                        userFirstname={user.name ?? ""}
                     />
                 ),
             };
