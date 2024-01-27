@@ -12,15 +12,11 @@ const shema = z.object({
 });
 
 export async function POST(request: Request) {
-    const { searchParams } = new URL(request.url);
-    const result = shema.safeParse(Object.fromEntries(searchParams));
-    if (!result.success) {
-        return Response.json({ error: result.error }, { status: 400 });
-    }
-
-    const { secret } = result.data;
-    if (secret !== process.env.JWT_SECRET) {
-        return Response.json({ error: "Invalid secret" }, { status: 400 });
+    if (
+        request.headers.get("Authorization") !==
+        `Bearer ${process.env.CRON_SECRET}`
+    ) {
+        return Response.json({ error: "Invalid secret" }, { status: 401 });
     }
 
     const monthStart = createDateNumber(startOfMonth(new Date()));
