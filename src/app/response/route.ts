@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db";
 import { safeAsync } from "@/lib/safeAsync";
 import { createDateNumber, verifyToken } from "@/lib/utils";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const shema = z.object({
@@ -42,5 +43,5 @@ export async function GET(request: Request) {
         );
     }
 
-    return Response.json({ success: true });
+    redirect(`/response/${userId}/${answer}`);
 }
