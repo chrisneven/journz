@@ -2,11 +2,11 @@
     "crons": [
         {
             "path": "/create",
-            "schedule": "0 12 * * 1-5"
+            "schedule": "0 9 * * 1-5"
         },
         {
             "path": "/overview",
-            "schedule": "0 13 1 * *"
+            "schedule": "0 11 1 * *"
         }
     ]
 }
