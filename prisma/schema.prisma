@@ -19,6 +19,7 @@ model User {
   travelAllowance Int        @default(0)
   // should be in km
   travelDistance  Int        @default(0)
+  sessions        Session[]
 }
 
 model Response {
@@ -30,4 +31,11 @@ model Response {
   user       User     @relation(fields: [userId], references: [id])
 
   @@id([dateNumber, userId])
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 }

@@ -1,10 +1,27 @@
 import { prisma } from "@/lib/db";
+import { createDateNumber } from "@/lib/utils";
+import { addMonths, endOfMonth, startOfMonth } from "date-fns";
 import { redirect } from "next/navigation";
 
 export default async function YesPage({ params }: { params: { id: string } }) {
+    const currentDate = new Date();
+    const previousMonth = addMonths(currentDate, -1);
+    const monthStart = createDateNumber(startOfMonth(previousMonth));
+    const monthEnd = createDateNumber(endOfMonth(previousMonth));
+
     const user = await prisma.user.findUnique({
         where: {
             id: params.id,
+        },
+        include: {
+            responses: {
+                where: {
+                    dateNumber: {
+                        gte: monthStart,
+                        lte: monthEnd,
+                    },
+                },
+            },
         },
     });
 
@@ -32,6 +49,13 @@ export default async function YesPage({ params }: { params: { id: string } }) {
                 <li>📈 Opportunities to connect and grow with your team.</li>
             </ul>
             <p className="font-semibold text-gray-800">See you soon! 🚀</p>
+
+            {/* add content that says how many times ive been at the office already */}
+
+            <p className="text-gray-700 mt-4">
+                P.S. You’ve been at the office {user.responses.length} times
+                this month.
+            </p>
         </div>
     );
 }
