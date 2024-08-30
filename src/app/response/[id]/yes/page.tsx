@@ -59,3 +59,5 @@ export default async function YesPage({ params }: { params: { id: string } }) {
         </div>
     );
 }
+
+export const dynamic = "force-dynamic";

@@ -38,3 +38,5 @@ export default async function NoPage({ params }: { params: { id: string } }) {
         </div>
     );
 }
+
+export const dynamic = "force-dynamic";
