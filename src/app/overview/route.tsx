@@ -51,10 +51,11 @@ export async function GET(request: Request) {
             const yesAmount = user.responses.filter(
                 (response) => response.attended
             ).length;
-            // e.g. 10 times * 10 km * 0.19 = 19 euro
+            // Total travel cost reimbursement per month=(one-way distance×2×number of workdays per month)×reimbursement per kilometer
             const travelReimbursement = (
-                yesAmount *
                 user.travelDistance *
+                2 *
+                yesAmount *
                 (user.travelAllowance / 100)
             ).toFixed(2);
 
